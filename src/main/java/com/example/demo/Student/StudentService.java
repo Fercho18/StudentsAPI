@@ -47,8 +47,8 @@ public class StudentService {
     public void updateStudent(Long studentId,
                               String name,
                               String email) {
-        Student student = studentRepository.findById(studentId).orElseThrow() -> new IllegalStateException(
-                "Student with " + studentId + " does not exists");
+        Student student = studentRepository.findById(studentId).orElseThrow(() -> new IllegalStateException(
+                "Student with " + studentId + " does not exists"));
 
         if(name!=null && name.length() > 0 && !Objects.equals(name, student.getName())){
             student.setName(name);
